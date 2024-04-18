@@ -1,0 +1,14 @@
+package com.diplomski.DTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UpdateZnamenitostDTO extends UpdateDestinacijaDTO{
+	private String tipZnamenitosti;
+}

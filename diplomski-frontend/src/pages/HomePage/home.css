@@ -1,0 +1,12 @@
+a:hover {
+    opacity: 0.8;
+
+}
+
+.card-container{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}

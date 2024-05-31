@@ -13,6 +13,6 @@ public class ReakcijaDTO {
 
 	
 	private boolean svidjanje;
-	private int korisnik_id;
+	//private int korisnik_id;
 	private int recenzija_id;
 }

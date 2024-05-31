@@ -1,5 +1,7 @@
 package com.diplomski.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class SlikaDestinacije {
 	@Column(name= "putanja",nullable=false)
 	private String putanja;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "destinacija" , nullable = false )
 	private Destinacija destinacija;

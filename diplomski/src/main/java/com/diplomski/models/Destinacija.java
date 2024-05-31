@@ -51,7 +51,7 @@ public class Destinacija {
 	@OneToMany(mappedBy = "destinacija" , fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
 	private List<Recenzija> recenzija;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "destinacija" )
 	private List<SlikaDestinacije> slikaDestinacije;
 

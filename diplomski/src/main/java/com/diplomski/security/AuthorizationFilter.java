@@ -27,7 +27,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
       if(request.getServletPath().contains("/api/login") || request.getServletPath().equals("/api/register")
     		  ||request.getServletPath().contains("/api/destinacija") ||request.getServletPath().contains("/api/recenzija")
-    		  ||request.getServletPath().contains("/api/reakcija")){
+    		  ){
           filterChain.doFilter(request, response);
       }
       //Uzima se uloga korisnika i provera je koja je 

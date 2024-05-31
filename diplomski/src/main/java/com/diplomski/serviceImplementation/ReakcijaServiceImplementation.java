@@ -3,6 +3,7 @@ package com.diplomski.serviceImplementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.diplomski.DTO.ReakcijaDTO;
@@ -41,7 +42,9 @@ public class ReakcijaServiceImplementation implements ReakcijaService {
 
 	@Override
 	public Reakcija createReakcija(ReakcijaDTO reakcijaDTO) {
-		Korisnik korisnik = korisnikRepo.findById(reakcijaDTO.getKorisnik_id());
+		//Korisnik korisnik = korisnikRepo.findById(reakcijaDTO.getKorisnik_id());
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Korisnik korisnik = korisnikRepo.findByEmail(email);
 		Recenzija recenzija = recenzijaRepo.findById(reakcijaDTO.getRecenzija_id());
 		Reakcija reakcija = new Reakcija(korisnik , recenzija , reakcijaDTO.isSvidjanje());
 		

@@ -52,7 +52,7 @@ public class ReakcijaController {
 	
 	
 	@PutMapping
-	public ResponseEntity<Reakcija> updateSmestaj(@RequestBody UpdateReakcijaDTO updateReakcijaDTO){
+	public ResponseEntity<Reakcija> updateReakcija(@RequestBody UpdateReakcijaDTO updateReakcijaDTO){
 		Reakcija reakcija = reakcijaService.updateReakcija(updateReakcijaDTO);
 		if(reakcija == null) {
 			return new ResponseEntity<Reakcija>(HttpStatus.BAD_REQUEST);

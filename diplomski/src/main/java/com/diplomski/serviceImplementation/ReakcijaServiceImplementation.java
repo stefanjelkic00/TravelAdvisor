@@ -63,8 +63,10 @@ public class ReakcijaServiceImplementation implements ReakcijaService {
 
 	@Override
 	 public void  deleteReakcija(int id) {
-		Reakcija reakcija = reakcijaRepo.findById(id);
-		Recenzija recenzija = reakcija.getRecenzija();		
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Korisnik korisnik = korisnikRepo.findByEmail(email);
+		Recenzija recenzija = recenzijaRepo.findById(id);
+		Reakcija reakcija = reakcijaRepo.findByRecenzijaAndKorisnik(recenzija , korisnik);
 		
 		if(reakcija.isSvidjanje() == true) { 
 			int brojSvidjanja = reakcija.getRecenzija().getBrojSvidjanja();
@@ -83,8 +85,10 @@ public class ReakcijaServiceImplementation implements ReakcijaService {
 
 	@Override
 	public Reakcija updateReakcija(UpdateReakcijaDTO reakcijaDTO) {
-		Reakcija reakcija = reakcijaRepo.findById(reakcijaDTO.getId());
-		
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Korisnik korisnik = korisnikRepo.findByEmail(email);
+		Recenzija recenzija = recenzijaRepo.findById(reakcijaDTO.getId());
+		Reakcija reakcija = reakcijaRepo.findByRecenzijaAndKorisnik(recenzija , korisnik);
 		if(reakcija.isSvidjanje()== true) {
 			reakcija.setSvidjanje(false);
 			int brojSvidjanja = reakcija.getRecenzija().getBrojSvidjanja();
@@ -105,6 +109,15 @@ public class ReakcijaServiceImplementation implements ReakcijaService {
 		
 		
 		return reakcijaRepo.save(reakcija);
+	}
+
+	@Override
+	public Reakcija getReakcijaByRecenzijaAndKorisnik(int id) {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+		Korisnik korisnik = korisnikRepo.findByEmail(email);
+		Recenzija recenzija = recenzijaRepo.findById(id);
+		Reakcija reakcija = reakcijaRepo.findByRecenzijaAndKorisnik(recenzija, korisnik);
+		return reakcija;
 	}
 
 }

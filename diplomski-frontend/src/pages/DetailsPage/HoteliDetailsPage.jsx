@@ -4,6 +4,7 @@ import customAxios from '../../utils/customAxios';
 import Slider from '../../components/Slider';
 import {format} from 'date-fns';
 import Reakcija from '../../components/Reakcija';
+import ReakcijaNoAuth from '../../components/ReakcijaNoAuth';
 
 
 function HoteliDetailsPage() {
@@ -13,6 +14,8 @@ function HoteliDetailsPage() {
   const oceneBoja = {
     1: "red"  , 2: "red" , 3: "yellow" , 4: "orange" , 5: "green"
   };
+  const token = sessionStorage.getItem("jwtToken");
+  
 
 
 
@@ -66,7 +69,10 @@ function HoteliDetailsPage() {
                 <p className='card-text'>Komentar : {item.komentar}</p>
               </div>
               <div className='card-footer'>
-                <Reakcija item={item} index={index}/>
+                {
+                  token ? <Reakcija item={item} index={index}/>:<ReakcijaNoAuth item={item} index={index} />
+                }
+                
               </div>
             </div>
           ))

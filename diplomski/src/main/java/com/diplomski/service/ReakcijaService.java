@@ -13,6 +13,8 @@ public interface ReakcijaService {
 	
 	Reakcija getReakcijaById(int id); 
 	
+	Reakcija getReakcijaByRecenzijaAndKorisnik(int id);
+	
 	Reakcija createReakcija(ReakcijaDTO reakcijaDTO);
 	
 	void deleteReakcija(int id);

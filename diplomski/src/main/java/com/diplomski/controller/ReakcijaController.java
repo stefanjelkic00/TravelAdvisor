@@ -40,6 +40,16 @@ public class ReakcijaController {
 		return new ResponseEntity<Reakcija>(reakcija , HttpStatus.OK);
 	}
 	
+	@GetMapping("/recenzija/{id}")
+	public ResponseEntity<Reakcija> getReakcijaByRecenzijaAndKorisnik(@PathVariable int id){
+		Reakcija reakcija = reakcijaService.getReakcijaByRecenzijaAndKorisnik(id);
+		if(reakcija == null) {
+			return new ResponseEntity<Reakcija>(HttpStatus.OK);
+		}
+		return new ResponseEntity<Reakcija>(reakcija , HttpStatus.OK);
+		
+	}
+	
 	@PostMapping
 	public ResponseEntity<Reakcija> createReakcija(@RequestBody ReakcijaDTO reakcijaDTO){
 		Reakcija reakcija = reakcijaService.createReakcija(reakcijaDTO);

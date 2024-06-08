@@ -12,7 +12,6 @@ function NavBar() {
         sessionStorage.clear();
         toast.success("Uspesno ste se odjavili .")
         setTimeout(() => {
-            console.log("logoutttt")
             navigate("/");
         }, 1000);
         

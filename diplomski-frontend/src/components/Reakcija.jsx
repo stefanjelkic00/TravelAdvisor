@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { ButtonGroup, ToggleButton } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome' 
-import {faThumbsUp , faThumbsDown} from '@fortawesome/free-solid-svg-icons';
+import {faThumbsUp , faThumbsDown , faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import customAxios from '../utils/customAxios';
 
 function Reakcija({item , index}) {
@@ -78,7 +78,11 @@ function Reakcija({item , index}) {
             <ToggleButton  type='checkbox' variant={unlikeStatus ? 'danger':'outline-danger'} onClick={handleUnlikeClick}>
                 <FontAwesomeIcon icon={faThumbsDown}/> {brojNesvidjanja}
             </ToggleButton>
+            
         </ButtonGroup>
+        <button type='button' className='btn btn-danger' style={{position: "relative" , float: "right"}}>
+                  <FontAwesomeIcon icon={faTrashCan}/>
+        </button>
     </div>
   )
 }

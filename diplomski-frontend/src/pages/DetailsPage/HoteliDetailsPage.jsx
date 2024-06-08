@@ -72,7 +72,6 @@ function HoteliDetailsPage() {
                 {
                   token ? <Reakcija item={item} index={index}/>:<ReakcijaNoAuth item={item} index={index} />
                 }
-                
               </div>
             </div>
           ))

@@ -40,6 +40,7 @@ function Login() {
                                 }
                             }).then(response => {
                                 sessionStorage.setItem("jwtToken" , response.data.jwtToken );
+                                sessionStorage.setItem("email" , response.data.email);
                                 toast.success("Uspesno ste se ulogovali ." );
                                 setTimeout(() => {
                                     navigate("/");

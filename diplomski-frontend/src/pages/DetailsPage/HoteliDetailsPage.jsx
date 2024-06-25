@@ -5,7 +5,8 @@ import Slider from '../../components/Slider';
 import {format} from 'date-fns';
 import Reakcija from '../../components/Reakcija';
 import ReakcijaNoAuth from '../../components/ReakcijaNoAuth';
-
+import {toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function HoteliDetailsPage() {
   const {id} = useParams();
@@ -15,6 +16,12 @@ function HoteliDetailsPage() {
     1: "red"  , 2: "red" , 3: "yellow" , 4: "orange" , 5: "green"
   };
   const token = sessionStorage.getItem("jwtToken");
+  const [prikazDugmeta , setPrikazDugmeta] = useState(true);
+  const email = sessionStorage.getItem("email");
+  const [show , setShow] = useState(false);
+  const [formData , setFormData] = useState({
+    ocena:'' , komentar:''
+  });
   
 
 
@@ -24,7 +31,7 @@ function HoteliDetailsPage() {
       customAxios.get(`http://localhost:8001/api/destinacija/smestaj/${id}`).then(res=>{
         setHotel(res.data);
       });
-      customAxios.get(`http://localhost:8001/api/recenzija/destinacija/${id}`).then(res=>{
+      customAxios.get(`http://localhost:8001/api/recenzija/get/destinacija/${id}`).then(res=>{
         console.log("recenzije")
         console.log(res.data)
         setRecenzije(res.data);
@@ -35,9 +42,109 @@ function HoteliDetailsPage() {
       console.log("Nisu uspesno izvuceni podaci ")
     }
   },[])
+
+
+  useEffect(()=>{
+    setPrikazDugmeta(!recenzije.some(r => r.korisnik.email === email ));
+  },[recenzije])
+
+    const deleteRecenzija=async(id)=>{
+    await customAxios.delete(`http://localhost:8001/api/recenzija/${id}`)
+        .then(res => {
+            toast.success("Uspesno ste obrisali vasu recenziju");
+            const newRecenzije =recenzije.filter(r => r.id !== id);
+            setRecenzije(newRecenzije);
+        }).catch(error => {
+            toast.error("Brisanje ove recenzije nije moguce .");
+        });
+}
+
+  function openModal(){
+    setShow(true);
+  }
+
+  function closeModal(){
+    setFormData({
+      ocena: '' , komentar: ''
+    });
+    setShow(false);
+  }
+
+   function handleChange(e){
+    const {name,value} = e.target;
+    setFormData({...formData ,[name]: value});
+  }
+
+  async function kreirajRecenziju(){
+    
+    if(formData.ocena == '' ){
+      toast.error("Neophodno je da izaberete ocenu.");
+    }
+    if(formData.komentar == ''){
+      toast.error("Neophodno je da unesete komentar.");
+      return;
+    }
+
+    await customAxios.post("http://localhost:8001/api/recenzija" , {
+      ocena : formData.ocena , komentar : formData.komentar , destinacijaID : id 
+    }).then(res => {
+      toast.success("Uspesno ste kreirali recenziju .");
+      setRecenzije([...recenzije , res.data]);
+    }).catch(error => {
+      toast.error("Recenzija nije kreirana , pokusajte ponovo .");
+    })
+    closeModal();
+  }
+
+
   return (
 
     <div className='container' style={{minHeight:"70vh"}}>
+
+
+    <div className={`modal ${show ? 'show':''}`} data-bs-backdrop="static" tabIndex="-1" role='dialog' style={{display: show ? 'block':'none'}}>
+        <div className='modal-dialog' role='document'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h5 className='modal-title'>
+                Forma za kreiranje recenzije :
+              </h5>
+              <button type='button' className='close btn btn-danger ms-auto' onClick={closeModal}>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className='modal-body'>
+                <form>
+                  <div>
+                    <label htmlFor="ocena">Ocena :</label>
+                    <br/>
+                    <select name="ocena" id="ocena" value={formData.ocena} onChange={handleChange}>
+                      <option value="">Izaberite ocenu...</option>
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                      <option value={5}>5</option>
+                    </select>                   
+                  </div>
+                  <div>
+                  
+                  <label htmlFor="komentar">Komentar :</label>
+                  <br/>
+                  <textarea id="komentar" name='komentar' value={formData.komentar} onChange={handleChange}/>
+
+                  </div>
+                </form>
+            </div>
+            <div className='modal-footer'>
+                <button type='button' className='btn btn-secondary' onClick={closeModal}>Zatvori</button>
+                <button type='button' className='btn btn-primary' onClick={kreirajRecenziju}>Kreiraj</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
       <h1> {hotel?.naziv} </h1>
       <hr/>
       <div>
@@ -55,7 +162,18 @@ function HoteliDetailsPage() {
       </div>
       <br/>
       <hr/>
-      <h1>Recenzije smestaja : </h1>
+      <div>
+        {
+          prikazDugmeta ? (
+            <div className='d-flex flex-row justify-content-around'>
+              <h1 style={{marginLeft:"350px"}}>Recenzije smestaja :</h1>
+              
+              <button type='button' className='btn btn-warning btn-sm' onClick={openModal}>Dodaj recenziju</button>
+            </div>
+          ):<h1>Recenzije smestaja :</h1>
+        }
+      </div>
+      
       
       <div className='container mt-3 d-flex p-4 flex-wrap align-items-center justify-content-center '>
         {
@@ -70,7 +188,7 @@ function HoteliDetailsPage() {
               </div>
               <div className='card-footer'>
                 {
-                  token ? <Reakcija item={item} index={index}/>:<ReakcijaNoAuth item={item} index={index} />
+                  token ? <Reakcija item={item} index={index} deleteRecenzija={deleteRecenzija} />:<ReakcijaNoAuth item={item} index={index} />
                 }
               </div>
             </div>

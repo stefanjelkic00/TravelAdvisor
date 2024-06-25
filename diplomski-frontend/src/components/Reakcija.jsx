@@ -4,12 +4,15 @@ import { ButtonGroup, ToggleButton } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome' 
 import {faThumbsUp , faThumbsDown , faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import customAxios from '../utils/customAxios';
+import {toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-function Reakcija({item , index}) {
+function Reakcija({item , index , deleteRecenzija}) {
     const [likeStatus , setLikeStatus] = useState(false);
     const [unlikeStatus , setUnlikeStatus] = useState(false);
     const [brojSvidjanja , setBrojSvidjanja] = useState(item.brojSvidjanja);
     const [brojNesvidjanja , setBrojNesvidjanja] = useState(item.brojNesvidjanja);
+    const email = sessionStorage.getItem("email");
 
     useEffect(()=>{
          customAxios.get(`http://localhost:8001/api/reakcija/recenzija/${item.id}`).then(res=>{
@@ -80,9 +83,13 @@ function Reakcija({item , index}) {
             </ToggleButton>
             
         </ButtonGroup>
-        <button type='button' className='btn btn-danger' style={{position: "relative" , float: "right"}}>
-                  <FontAwesomeIcon icon={faTrashCan}/>
-        </button>
+        {
+            item.korisnik.email == email ? (
+                <button type='button' className='btn btn-danger'  onClick={()=>deleteRecenzija(item.id)} style={{position: "relative" , float: "right"}}>
+                    <FontAwesomeIcon icon={faTrashCan}/>
+                </button>
+            ):null
+        }
     </div>
   )
 }

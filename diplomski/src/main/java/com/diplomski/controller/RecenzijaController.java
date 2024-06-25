@@ -23,12 +23,12 @@ public class RecenzijaController {
 	@Autowired
 	private RecenzijaService recenzijaService;
 	
-	@GetMapping
+	@GetMapping("/get")
 	public ResponseEntity<List<Recenzija>> getAllRecenzije(){
 		return new ResponseEntity<List<Recenzija>>(recenzijaService.getAllRecenzije(),HttpStatus.OK);
 	}
 	
-	@GetMapping("/destinacija/{destinacija_id}")
+	@GetMapping("/get/destinacija/{destinacija_id}")
 	public ResponseEntity<List<Recenzija>> getAllRecenzijeByDestinacija(@PathVariable int destinacija_id){
 		return new ResponseEntity<List<Recenzija>>(recenzijaService.getAllRecenzijeByDestinacija(destinacija_id),HttpStatus.OK);
 	}

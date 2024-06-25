@@ -7,6 +7,7 @@ function NavBar() {
 
     const navigate = useNavigate();
     const token = sessionStorage.getItem("jwtToken");
+    const username = sessionStorage.getItem("email")?.split("@")[0];
 
     function logout(){
         sessionStorage.clear();
@@ -43,13 +44,16 @@ function NavBar() {
                     
                 </ul>
                 ):(
-                    <ul className='navbar-nav mrc-auto'>
+                    <ul className='navbar-nav mrs-auto w-100 '>
                         <li className='nav-item active'>
                             <Link className='nav-link' to="/">
                                 Home
                             </Link>
                         </li>
-                        <li>
+                        <li className='nav-item ms-auto'>
+                            <p className='text-white m-2'>Username : {username}</p>
+                        </li>
+                        <li className='nav-item ms-2 me-5'>
                             <button type='button' className='btn btn-danger' onClick={()=> logout()}>Logout</button>
                         </li>        
                     </ul>

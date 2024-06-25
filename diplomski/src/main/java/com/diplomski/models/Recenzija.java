@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,15 +47,15 @@ public class Recenzija {
 	private int brojNesvidjanja;
 	
 	@ManyToOne
-	@JoinColumn(name = "korisnik" , unique = true)
+	@JoinColumn(name = "korisnik" , unique = false)
 	private Korisnik korisnik;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "destinacija" , nullable = false)
 	private Destinacija destinacija; 
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "recenzija")
+	@OneToMany(mappedBy = "recenzija" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
 	private List<Reakcija> svidjanjeRecenzije;
 
 	public Recenzija(int ocena, String komentar, Korisnik korisnik, Destinacija destinacija) {

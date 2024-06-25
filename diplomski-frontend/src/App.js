@@ -28,7 +28,7 @@ function App() {
             <Route path='/restoran-details/:id' element={<div><NavBar/><RestoraniDetailsPage/><Footer/></div>}/>
 
             <Route path='/hoteli' element={<div><NavBar/><Hoteli/><Footer/></div>}/>
-            <Route path='/hotel-details/:id' element={<div><NavBar/><HoteliDetailsPage/><Footer/></div>}/>
+            <Route path='/hotel-details/:id' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><HoteliDetailsPage/><Footer/></div>}/>
 
             <Route path='/znamenitosti' element={<div><NavBar/><Znamenitosti/><Footer/></div>}/>
             <Route path='/znamenitost-details/:id' element={<div><NavBar/><ZnamenitostiDetailsPage/><Footer/></div>}/>

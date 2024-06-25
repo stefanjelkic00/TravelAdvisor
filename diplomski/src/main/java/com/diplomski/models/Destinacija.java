@@ -48,7 +48,7 @@ public class Destinacija {
 	private Double prosecnaOcena;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "destinacija" , fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "destinacija" , fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
 	private List<Recenzija> recenzija;
 	
 	

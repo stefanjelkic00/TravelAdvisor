@@ -14,8 +14,6 @@ public class RecenzijaDTO {
 	private int ocena;
 	
 	private String komentar;
-	
-	private int korisnikID;
-	
+		
 	private int destinacijaID; 
 }

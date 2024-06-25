@@ -3,6 +3,7 @@ package com.diplomski.serviceImplementation;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import com.diplomski.DTO.RecenzijaDTO;
 import com.diplomski.models.Destinacija;
@@ -40,8 +41,10 @@ public class RecenzijaServiceImplementation implements RecenzijaService{
 	@Override
 	public Recenzija createRecenzija(RecenzijaDTO recenzijaDTO) {
 		try {
+			String email = SecurityContextHolder.getContext().getAuthentication().getName();
+			Korisnik korisnik = korisnikRepo.findByEmail(email);
 			Destinacija destinacija = destinacijaRepo.findById(recenzijaDTO.getDestinacijaID());
-			Korisnik korisnik = korisnikRepo.findById(recenzijaDTO.getKorisnikID());	
+			System.out.println(korisnik.getEmail());
 			Recenzija recenzija = new Recenzija(recenzijaDTO.getOcena(), recenzijaDTO.getKomentar() ,korisnik, destinacija);
 			recenzija.setBrojSvidjanja(0);
 			recenzija.setBrojNesvidjanja(0);
@@ -68,7 +71,8 @@ public class RecenzijaServiceImplementation implements RecenzijaService{
 	public Recenzija deleteRecenzija(int id) {
 		Recenzija recenzija = recenzijaRepo.findById(id);
 		if(recenzija != null) {
-			recenzijaRepo.delete(recenzija);
+			System.out.println("Nesto ");
+			recenzijaRepo.deleteById(id);
 			return recenzija;
 		}
 		

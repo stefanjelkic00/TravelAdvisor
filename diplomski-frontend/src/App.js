@@ -14,7 +14,6 @@ import Znamenitosti from './pages/ZnamenitostiPage/Znamenitosti';
 import ZnamenitostiDetailsPage from './pages/DetailsPage/ZnamenitostiDetailsPage'
 import HoteliDetailsPage from './pages/DetailsPage/HoteliDetailsPage';
 
-
 function App() {
   return (
     <div className="App">
@@ -27,7 +26,7 @@ function App() {
             <Route path='/restorani' element={<div><NavBar/><Restorani/><Footer/></div>}/>
             <Route path='/restoran-details/:id' element={<div><NavBar/><RestoraniDetailsPage/><Footer/></div>}/>
 
-            <Route path='/hoteli' element={<div><NavBar/><Hoteli/><Footer/></div>}/>
+            <Route path='/hoteli' element={<div><NavBar/><Hoteli/><Footer/></div>}/> 
             <Route path='/hotel-details/:id' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><HoteliDetailsPage/><Footer/></div>}/>
 
             <Route path='/znamenitosti' element={<div><NavBar/><Znamenitosti/><Footer/></div>}/>

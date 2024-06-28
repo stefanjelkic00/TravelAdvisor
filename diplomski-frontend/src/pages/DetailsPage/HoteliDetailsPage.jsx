@@ -7,6 +7,7 @@ import Reakcija from '../../components/Reakcija';
 import ReakcijaNoAuth from '../../components/ReakcijaNoAuth';
 import {toast} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import Map from '../../components/Map';
 
 function HoteliDetailsPage() {
   const {id} = useParams();
@@ -149,15 +150,20 @@ function HoteliDetailsPage() {
       <hr/>
       <div>
         <Slider data={hotel?.slikaDestinacije}/>
-        <div>
+        <div >
           <div>
             <h2> Tip smestaja : {hotel?.tipSmestaja}</h2>
             <h2>Adresa : {hotel?.adresa} </h2>
             {
-              hotel?.prosecnaOcena ? <h2>Prosecna ocena : {hotel?.prosecnaOcena}</h2> : <h2>Prosecna ocena : \</h2>
+              hotel?.prosecnaOcena ? <h2 style={{color: oceneBoja[Math.floor(hotel.prosecnaOcena)]}} >Prosecna ocena : {hotel?.prosecnaOcena.toFixed(1)}</h2> : <h2>Prosecna ocena : \</h2>
             }
             <h2> Opis : {hotel?.opis}</h2>
           </div>
+          
+          <div className='d-flex align-items-center justify-content-center'>
+            <Map item={hotel}/>
+          </div>
+          
         </div>
       </div>
       <br/>
@@ -166,9 +172,14 @@ function HoteliDetailsPage() {
         {
           prikazDugmeta ? (
             <div className='d-flex flex-row justify-content-around'>
-              <h1 style={{marginLeft:"350px"}}>Recenzije smestaja :</h1>
-              
-              <button type='button' className='btn btn-warning btn-sm' onClick={openModal}>Dodaj recenziju</button>
+              {
+                token ? (
+                  <>
+                    <h1 style={{marginLeft:"350px"}}>Recenzije smestaja :</h1> 
+                    <button type='button' className='btn btn-warning btn-sm' onClick={openModal}>Dodaj recenziju</button>
+                  </>
+                ) : <h1>Recenzije smestaja :</h1>
+              }
             </div>
           ):<h1>Recenzije smestaja :</h1>
         }

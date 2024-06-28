@@ -71,6 +71,16 @@ public class RecenzijaServiceImplementation implements RecenzijaService{
 	public Recenzija deleteRecenzija(int id) {
 		Recenzija recenzija = recenzijaRepo.findById(id);
 		if(recenzija != null) {
+			int brojRecenzija = recenzija.getDestinacija().getRecenzija().size();
+			Double prosecnaOcenaDestinacija = recenzija.getDestinacija().getProsecnaOcena();
+			double ukupanZbirOcena = prosecnaOcenaDestinacija * brojRecenzija;
+			double prosecnaOcena = ukupanZbirOcena - recenzija.getOcena();
+			if(brojRecenzija-1 > 0) {
+				prosecnaOcena= prosecnaOcena/(brojRecenzija-1); 
+			}
+			recenzija.getDestinacija().setProsecnaOcena(prosecnaOcena);
+			recenzijaRepo.save(recenzija);
+
 			System.out.println("Nesto ");
 			recenzijaRepo.deleteById(id);
 			return recenzija;

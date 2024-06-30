@@ -27,17 +27,17 @@ function NavBar() {
                 <ul className='navbar-nav mrc-auto'>
                     <li className='nav-item active'>
                         <Link className='nav-link' to="/">
-                            Home
+                            Početna stranica
                         </Link>
                     </li>       
                     <li className='nav-item'>
                         <Link className='nav-link' to="/login">
-                            Login
+                            Prijava
                         </Link>
                     </li>
                     <li className='nav-item '>
                         <Link className='nav-link' to="/registration">
-                            Registration
+                            Registracija
                         </Link>
                     </li>
                         
@@ -47,14 +47,14 @@ function NavBar() {
                     <ul className='navbar-nav mrs-auto w-100 '>
                         <li className='nav-item active'>
                             <Link className='nav-link' to="/">
-                                Home
+                                Početna stranica
                             </Link>
                         </li>
                         <li className='nav-item ms-auto'>
-                            <p className='text-white m-2'>Username : {username}</p>
+                            <p className='text-white m-2'>Korisničko ime : {username}</p>
                         </li>
                         <li className='nav-item ms-2 me-5'>
-                            <button type='button' className='btn btn-danger' onClick={()=> logout()}>Logout</button>
+                            <button type='button' className='btn btn-danger' onClick={()=> logout()}>Odjava </button>
                         </li>        
                     </ul>
                 )

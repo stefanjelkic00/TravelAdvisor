@@ -9,7 +9,7 @@ function Footer() {
     <div className="container">
        <div className="row">
           <div className="col">
-             <h4>Follow us </h4>
+             <h4>Zapratite nas </h4>
              <ul className="list-inline " style={{margin:0,padding:0}}>
                 <li className="list-inline-item"> <a href="#"><FontAwesomeIcon icon={faFacebook} style={{color: "white"}}/></a> </li>
                 <li className="list-inline-item"> <a href="#"><FontAwesomeIcon icon={faTwitter} style={{color: "white"}}/> </a> </li>
@@ -22,7 +22,7 @@ function Footer() {
     <div className="container-fluid">
        <div className="row">
           <div className="col">
-             <p className="mb-0">© 2024 Travel Advisor. All Rights Reserved. </p>
+             <p className="mb-0">© 2024 Travel Advisor. Sva prava su zadržana . </p>
           </div>
        </div>
     </div>

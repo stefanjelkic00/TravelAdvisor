@@ -62,14 +62,14 @@ function Registration() {
                     {formik => (
                         
                         <div>
-                        <h1 className='my-4 font-weight-bold-display-4'>Registration form </h1>
+                        <h1 className='my-4 font-weight-bold-display-4'>Registracija : </h1>
                         <Form>
-                            <TextField label="Name :" name="name" type="text"/>
-                            <TextField label="Surname :" name="surname" type="text"/>
+                            <TextField label="Ime :" name="name" type="text"/>
+                            <TextField label="Prezime :" name="surname" type="text"/>
                             <TextField label="Email :" name="email" type="email"/>
-                            <TextField label="Password :" name="password" type="password"/>
-                            <TextField label="Confirm password :" name="confirmPassword" type="password"/>
-                            <button className='btn btn-primary mt-3 me-3' type="submit">Register</button>
+                            <TextField label="Šifra :" name="password" type="password"/>
+                            <TextField label="Potvrda šifre :" name="confirmPassword" type="password"/>
+                            <button className='btn btn-primary mt-3 me-3' type="submit">Registracija</button>
                         </Form>
                     </div>
                     )}

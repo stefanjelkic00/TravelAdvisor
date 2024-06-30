@@ -54,11 +54,11 @@ function Login() {
             > 
                 {formik => (
                     <div>
-                    <h1 className='my-4 font-weight-bold-display-4'>Login form</h1>
+                    <h1 className='my-4 font-weight-bold-display-4'>Prijava :</h1>
                     <Form>
                         <TextField label="Email :" name="email" type="email"/>
-                        <TextField label="Password :" name="password" type="password"/>
-                        <button className='btn btn-primary mt-3 me-3' type="submit">Login</button>
+                        <TextField label="Šifra :" name="password" type="password"/>
+                        <button className='btn btn-primary mt-3 me-3' type="submit">Prijava</button>
                     </Form>
                 </div>
                 )}

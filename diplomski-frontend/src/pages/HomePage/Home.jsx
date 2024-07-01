@@ -9,15 +9,15 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div className='container' style={{minHeight:"76.5vh"}}>
-        <h1  className='text-primary'  style={{margin: "20px"  , fontFamily: 'serif'}}>Dobrodosli na Travel Advisor  </h1>
-        <h2 className='text-primary' style={{paddingBottom: "40px" , fontFamily: 'serif'}} >   Ovde cete moci da pogledate i da se informisete o svim vaznostima vezano za putovanja</h2>
+        <h1  className='text-primary'  style={{margin: "20px"  , fontFamily: 'serif'}}>Dobrodošli na Travel Advisor  </h1>
+        <h2 className='text-primary' style={{paddingBottom: "40px" , fontFamily: 'serif'}} >   Ovde ćete moći da pogledate i da se informišete o svim važnostima vezano za putovanja</h2>
         <div className='container card-container'>
         
                 <div style={{width:"25rem"}}>
                     <Link  to='/hoteli' className='card bg-dark text-white' >
                         <img src={hoteli} alt="hoteli" style={{width:"398px", height:"280px"}} />
                         <div className='card-img-overlay'>
-                        <h2 className='card-title' style={{fontFamily: 'serif'}}> Smestaji </h2>
+                        <h2 className='card-title' style={{fontFamily: 'serif'}}> Smeštaji </h2>
                         </div> 
                     </Link>       
                 </div>

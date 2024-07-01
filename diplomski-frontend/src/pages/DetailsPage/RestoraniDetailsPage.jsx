@@ -152,7 +152,7 @@ function RestoraniDetailsPage() {
         <Slider data={restoran?.slikaDestinacije}/>
         <div >
           <div>
-            <h2> Tip smestaja : {restoran?.tipSmestaja}</h2>
+            <h2> Tip restorana : {restoran?.tipSmestaja}</h2>
             <h2>Adresa : {restoran?.adresa} </h2>
             {
               restoran?.prosecnaOcena ? <h2 style={{color: oceneBoja[Math.floor(restoran.prosecnaOcena)]}} >Prosecna ocena : {restoran?.prosecnaOcena.toFixed(1)}</h2> : <h2>Prosecna ocena : \</h2>

@@ -25,7 +25,7 @@ function Hoteli() {
     
   return (
     <div className='container'>
-        <h1 >Smestaj</h1>
+        <h1 >Smeštaj</h1>
         <hr />
     <div className='mt-3 d-flex p-4 flex-wrap justify-content-around'>
        {

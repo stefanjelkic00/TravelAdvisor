@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.diplomski.models.Destinacija;
 import com.diplomski.models.Restoran;
@@ -54,6 +55,12 @@ public class DestinacijaController {
 	@GetMapping("/smestaj")
 	public ResponseEntity<List<Smestaj>> getAllSmestaji(){
 		return new ResponseEntity<List<Smestaj>>(smestajService.getAllSmestaji(),HttpStatus.OK);
+	}
+	
+	@GetMapping("/smestajSearch")
+	public ResponseEntity<List<Smestaj>> getAllSmestajiByQuery(@RequestParam String query){
+		List<Smestaj> smestaji = smestajService.getAllSmestajByQuery(query);
+		return new ResponseEntity<List<Smestaj>>(smestaji,HttpStatus.OK);
 	}
 	
 	@GetMapping("/smestaj/{id}")

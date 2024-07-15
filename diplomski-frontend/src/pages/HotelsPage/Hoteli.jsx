@@ -7,6 +7,9 @@ function Hoteli() {
 
     const [hoteli, setHoteli] = useState([]);
     const navigate = useNavigate();
+    const [query,setQuery] = useState('');
+    
+
 
     useEffect(()=>{
         try {
@@ -22,10 +25,27 @@ function Hoteli() {
     const detailsPage=(id)=>{
         navigate(`/hotel-details/${id}`);
     }
+
+    const handleQuery = (e)=>{
+        setQuery(e.target.value);
+    }
+
+    const handleSearch = async()=>{
+        await customAxios.get(`http://localhost:8001/api/destinacija/smestajSearch?query=${query}`).then(res => {
+            setHoteli(res.data);
+            
+        }).catch(error => {
+            console.log("Pretraga je neuspesna");
+        });
+    }
     
   return (
     <div className='container'>
         <h1 >Smeštaj</h1>
+        <div className='d-flex align-items-center justify-content-center'>
+            <input type='text' className='me-3' placeholder='Pretraži' value={query} onChange={handleQuery}/>
+            <button type='button' className='btn btn-primary' onClick={handleSearch}>Pretraga</button>
+        </div>
         <hr />
     <div className='mt-3 d-flex p-4 flex-wrap justify-content-around'>
        {

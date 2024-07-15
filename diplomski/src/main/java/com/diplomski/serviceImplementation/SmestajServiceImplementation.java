@@ -30,6 +30,14 @@ public class SmestajServiceImplementation implements SmestajService{
 		return smestajRepo.findAll();
 		
 	}
+	
+	@Override
+	public List<Smestaj> getAllSmestajByQuery(String query) {
+		List<Smestaj> smestaji = smestajRepo.findAll().stream().filter(s -> s.getNaziv().toLowerCase()
+				.contains(query.toLowerCase().trim()) || s.getAdresa().toLowerCase().contains(query.toLowerCase().trim()) || 
+				s.getTipSmestaja().toString().toLowerCase().contains(query.toLowerCase().trim())).toList();
+		return smestaji;
+	}
 
 	@Override
 	public Smestaj getSmestajById(int id) {
@@ -80,5 +88,7 @@ public class SmestajServiceImplementation implements SmestajService{
 		
 		return null;		
 	}
+
+	
 
 }

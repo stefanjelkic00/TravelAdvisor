@@ -18,4 +18,6 @@ public interface SmestajService {
 	Smestaj updateSmestaj(UpdateSmestajDTO smestajDTO);
 	
 	Smestaj deleteSmestaj(int id);
+	
+	List<Smestaj> getAllSmestajByQuery(String query);
 }

@@ -16,4 +16,6 @@ public interface ZnamenitostService {
 	Znamenitost updateZnamenitost(UpdateZnamenitostDTO znamenitostDTO);
 	
 	Znamenitost deleteZnamenitost(int id);
+
+	List<Znamenitost> getAllZnamenitostByQuery(String query);
 }

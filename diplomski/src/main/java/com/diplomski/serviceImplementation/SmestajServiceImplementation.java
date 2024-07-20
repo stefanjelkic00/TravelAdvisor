@@ -1,5 +1,6 @@
 package com.diplomski.serviceImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,14 +53,17 @@ public class SmestajServiceImplementation implements SmestajService{
 				smestajDTO.getNaziv(),smestajDTO.getOpis(),TipSmestaja.valueOf(smestajDTO.getTipSmestaja()));
 		
 		smestaj = smestajRepo.save(smestaj);
+		smestaj.setSlikaDestinacije(new ArrayList<>());
 		// Prvo smo morali da kreiramo smestaj da bih smo mogli da mu dodamo slike 
 		// if nam sluzi u slucaju da se desila neka greska prilikom kreiranja smestaja da nam onemoguci dodavanje slika onda
 		if(smestaj != null) {
 			for(String slika : smestajDTO.getSlikeDestinacije()) {
 				SlikaDestinacije slikaDestinacije = new SlikaDestinacije(slika,smestaj);
 				slikaDestinacijeRepo.save(slikaDestinacije);
+				smestaj.getSlikaDestinacije().add(slikaDestinacije);
 			}
 		}
+		
 		return smestaj;
 	}
 	

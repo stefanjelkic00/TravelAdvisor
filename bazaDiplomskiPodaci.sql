@@ -31,7 +31,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `korisnik` WRITE;
 /*!40000 ALTER TABLE `korisnik` DISABLE KEYS */;
-INSERT INTO `korisnik` VALUES (1,'stefan@gmail.com','Stefan','$2a$10$5jZ8PhNbuZyHBVjI4gW1PuS.MIhWfwJcDL/n20HxDYDyHJ1nO/lOC','Stefanovic','ROLE_KORISNIK'),(3,'stefan123@gmail.com','Stefan','$2a$10$LOm.cUedADxVHwHhc5LkWuhBRFQEh53bU.h4Y.qauaHlaM3RvhdoS','Peric','ROLE_KORISNIK'),(5,'milan123@gmail.com','Milan','$2a$10$tbNL9zXZCiIb4NnRvsmTfeYZWDtWxOjcxmqfXZBF5R0H19sWR/Ny2','Milanovic','ROLE_KORISNIK'),(6,'nikola123@gmail.com','Nikola','$2a$10$md31oagJKVBq9QGXVW6fGevw0kAmUv5aVXFhqQ.jYkyS5kKem0/UC','Nikolic','ROLE_KORISNIK'),(7,'petar123@gmail.com','Petar','$2a$10$JUrz1Ejnw2B2nIRsK1eTTOccL/L2MvssflyTdsDRWFpfbiI8OU0AW','Petrovic','ROLE_KORISNIK'),(8,'aleksa123@gmail.com','Aleksa','$2a$10$xwMad6WlN9p5C2vE1TUj/.m2ZH/Ndi4N88q07C5ZGimOEFAx9uGVC','Aleksic','ROLE_KORISNIK');
+INSERT INTO `korisnik` VALUES (1,'stefan@gmail.com','Stefan','$2a$10$5jZ8PhNbuZyHBVjI4gW1PuS.MIhWfwJcDL/n20HxDYDyHJ1nO/lOC','Stefanovic','ROLE_KORISNIK'),(3,'stefan123@gmail.com','Stefan','$2a$10$LOm.cUedADxVHwHhc5LkWuhBRFQEh53bU.h4Y.qauaHlaM3RvhdoS','Peric','ROLE_KORISNIK'),(5,'milan123@gmail.com','Milan','$2a$10$tbNL9zXZCiIb4NnRvsmTfeYZWDtWxOjcxmqfXZBF5R0H19sWR/Ny2','Milanovic','ROLE_KORISNIK'),(6,'nikola123@gmail.com','Nikola','$2a$10$md31oagJKVBq9QGXVW6fGevw0kAmUv5aVXFhqQ.jYkyS5kKem0/UC','Nikolic','ROLE_KORISNIK'),(7,'petar123@gmail.com','Petar','$2a$10$JUrz1Ejnw2B2nIRsK1eTTOccL/L2MvssflyTdsDRWFpfbiI8OU0AW','Petrovic','ROLE_KORISNIK'),(8,'aleksa123@gmail.com','Aleksa','$2a$10$xwMad6WlN9p5C2vE1TUj/.m2ZH/Ndi4N88q07C5ZGimOEFAx9uGVC','Aleksic','ROLE_ADMIN');
 /*!40000 ALTER TABLE `korisnik` ENABLE KEYS */;
 UNLOCK TABLES;
 

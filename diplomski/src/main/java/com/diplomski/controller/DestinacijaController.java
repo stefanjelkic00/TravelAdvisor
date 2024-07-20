@@ -63,6 +63,18 @@ public class DestinacijaController {
 		return new ResponseEntity<List<Smestaj>>(smestaji,HttpStatus.OK);
 	}
 	
+	@GetMapping("/znamenitostSearch")
+	public ResponseEntity<List<Znamenitost>> getAllZnamenitostiByQuery(@RequestParam String query){
+		List<Znamenitost> znamenitosti = znamenitostService.getAllZnamenitostByQuery(query);
+		return new ResponseEntity<List<Znamenitost>>(znamenitosti,HttpStatus.OK);
+	}
+	
+	@GetMapping("/restoranSearch")
+	public ResponseEntity<List<Restoran>> getAllRestoraniByQuery(@RequestParam String query){
+		List<Restoran> restorani = restoranService.getAllRestoranByQuery(query);
+		return new ResponseEntity<List<Restoran>>(restorani,HttpStatus.OK);
+	}
+	
 	@GetMapping("/smestaj/{id}")
 	public ResponseEntity<Smestaj> getSmestajById(@PathVariable int id){
 		Smestaj smestaj = smestajService.getSmestajById(id);

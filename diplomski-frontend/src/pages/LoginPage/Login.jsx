@@ -41,6 +41,8 @@ function Login() {
                             }).then(response => {
                                 sessionStorage.setItem("jwtToken" , response.data.jwtToken );
                                 sessionStorage.setItem("email" , response.data.email);
+                                sessionStorage.setItem("uloga" , response.data.uloga);
+                
                                 toast.success("Uspesno ste se ulogovali ." );
                                 setTimeout(() => {
                                     navigate("/");

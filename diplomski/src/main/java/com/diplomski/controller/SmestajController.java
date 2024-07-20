@@ -33,6 +33,7 @@ public class SmestajController {
 		if(smestaj == null) {
 			return new ResponseEntity<Smestaj>(HttpStatus.BAD_REQUEST);
 		}
+		
 		return new ResponseEntity<Smestaj>(smestaj , HttpStatus.CREATED);
 	}
 	

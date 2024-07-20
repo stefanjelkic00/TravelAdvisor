@@ -1,5 +1,6 @@
 package com.diplomski.serviceImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,14 @@ public class ZnamenitostServiceImplementation implements ZnamenitostService{
 		return znamenitostRepo.findAll();
 		
 	}
+	
+	@Override
+	public List<Znamenitost> getAllZnamenitostByQuery(String query) {
+		List<Znamenitost> znamenitosti = znamenitostRepo.findAll().stream().filter(s -> s.getNaziv().toLowerCase()
+				.contains(query.toLowerCase().trim()) || s.getAdresa().toLowerCase().contains(query.toLowerCase().trim()) || 
+				s.getTipZnamenitosti().toString().toLowerCase().contains(query.toLowerCase().trim())).toList();
+		return znamenitosti;
+	}
 
 	@Override
 	public Znamenitost getZnamenitostById(int id) {
@@ -44,12 +53,14 @@ public class ZnamenitostServiceImplementation implements ZnamenitostService{
 				znamenitostDTO.getNaziv(),znamenitostDTO.getOpis(),TipZnamenitosti.valueOf(znamenitostDTO.getTipZnamenitosti()));
 		
 		znamenitost = znamenitostRepo.save(znamenitost);
+		znamenitost.setSlikaDestinacije(new ArrayList<>());
 		// Prvo smo morali da kreiramo znamenitost da bih smo mogli da mu dodamo slike 
 		// if nam sluzi u slucaju da se desila neka greska prilikom kreiranja znamenitosti da nam onemoguci dodavanje slika onda
 		if(znamenitost != null) {
 			for(String slika : znamenitostDTO.getSlikeDestinacije()) {
 				SlikaDestinacije slikaDestinacije = new SlikaDestinacije(slika,znamenitost);
 				slikaDestinacijeRepo.save(slikaDestinacije);
+				znamenitost.getSlikaDestinacije().add(slikaDestinacije);
 			}
 		}
 		return znamenitost;

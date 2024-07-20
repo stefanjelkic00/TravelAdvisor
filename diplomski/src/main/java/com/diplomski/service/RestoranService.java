@@ -17,4 +17,6 @@ public interface RestoranService {
 	Restoran updateRestoran(UpdateRestoranDTO restoranDTO);
 	
 	Restoran deleteRestoran(int id);
+
+	List<Restoran> getAllRestoranByQuery(String query);
 } 

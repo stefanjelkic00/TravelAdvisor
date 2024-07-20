@@ -52,7 +52,7 @@ public class Destinacija {
 	private List<Recenzija> recenzija;
 	
 	
-	@OneToMany(mappedBy = "destinacija" )
+	@OneToMany(mappedBy = "destinacija"  , fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
 	private List<SlikaDestinacije> slikaDestinacije;
 
 	public Destinacija(float longitude, float latitude, String adresa, String naziv, String opis) {

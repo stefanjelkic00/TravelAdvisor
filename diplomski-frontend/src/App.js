@@ -23,13 +23,13 @@ function App() {
             <Route path='/login' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><Login/><Footer/></div>}/>
             <Route path='/registration' element={<div><NavBar/><ToastContainer position='top-center'autoClose={2000}/><Registration/><Footer/></div>}/> 
             
-            <Route path='/restorani' element={<div><NavBar/><Restorani/><Footer/></div>}/>
+            <Route path='/restorani' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><Restorani/><Footer/></div>}/>
             <Route path='/restoran-details/:id' element={<div><NavBar/><RestoraniDetailsPage/><Footer/></div>}/>
 
-            <Route path='/hoteli' element={<div><NavBar/><Hoteli/><Footer/></div>}/> 
+            <Route path='/hoteli' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><Hoteli/><Footer/></div>}/> 
             <Route path='/hotel-details/:id' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><HoteliDetailsPage/><Footer/></div>}/>
 
-            <Route path='/znamenitosti' element={<div><NavBar/><Znamenitosti/><Footer/></div>}/>
+            <Route path='/znamenitosti' element={<div><NavBar/><ToastContainer position='top-center' autoClose={2000}/><Znamenitosti/><Footer/></div>}/>
             <Route path='/znamenitost-details/:id' element={<div><NavBar/><ZnamenitostiDetailsPage/><Footer/></div>}/>
 
             <Route path='/' element={<div><NavBar/><ToastContainer position='top-center'autoClose={2000}/><Home/><Footer/></div>}/>

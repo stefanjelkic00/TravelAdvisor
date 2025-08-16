@@ -1,82 +1,78 @@
-# Diplomski-rad
-Travel Advisor je sveobuhvatna aplikacija koja korisnicima pruža informacije o smeštajima, restoranima i znamenitostima.
-Sluzi za opste informisanje korisnika prilikom putovanja i da prilikom izbora putovanja imaju precizan uvid u destinacije na koje zele da idu. 
-Travel Advisor aplikacija je bila tema mog diplomskog rada prilikom zavrsavanja studija softverskih i informacionih tehnologija.
+Travel Advisor - Thesis Project
 
-Tehnologije koje su koriscene su: 
-  Bekend: 
-    Java 17- Verzija koja je koriscena
-    SpringBoot- Framework za razvijanje REST API-ja.
-    Spring Security + Jwt- Autentifikacija i autorizacija.
-    Spring Data Jpa- ORM sloj za rad sa bazom podataka.
-    Hibernate- Povezuje Java objekte sa relacionim bazama MySql.
-    Lombok- Upotrebljivan za olaksanu implementaciju.
-    Swagger UI- Za testiranje end pointa.
-    
-  Pokretanje bekenda:
-    1.Uveriti se da je MySql pokrenut.
-    2.Nakon toga se moze pokrenuti app preko DiplomskiApplication fajla.
-    3.Aplikacija ce biti dostupna na: http://localhost:8001
+Travel Advisor is a comprehensive application that provides users with information about accommodations, restaurants and landmarks.
+It serves for general user information during travel and to provide precise insight into destinations they want to visit.
+Travel Advisor application was the topic of my thesis project when completing my studies in Software and Information Technologies.
 
-  Frontend:
-    React- Biblioteka za razvoj korisnickog interfejsa 
-    Axios – Biblioteka za HTTP zahteve prema backendu (GET, POST, PUT, DELETE).
-    Bootstrap – CSS framework za responzivni dizajn i layout.
-    React Toastify – Prikaz obaveštenja (toast notifikacije).
-    Leaflet – JavaScript biblioteka za interaktivne mape.
-    React Leaflet – React wrapper za Leaflet (da bi mape radile u React okruženju).
-    Formik – Alat za upravljanje formama (inputi, submit, validacija...).
-    Yup – Schema-based validacija podataka (često se koristi sa Formikom).
+Technologies used are:
 
-  Pokretanje frontenda:
-    Instalirati sve zavisnosti: npm install 
-    Pokrenuti React aplikaciju: npm start 
-    Aplikacija će biti dostupna na: http://localhost:3000
+Backend:
+Java 17                          -Version used
+SpringBoot                       -Framework for developing REST APIs
+Spring Security + JWT            -Authentication and authorization
+Spring Data JPA                  -ORM layer for database operations
+Hibernate                        -Maps Java objects to MySQL relational databases
+Lombok                           -Used for simplified implementation
+Swagger UI                       -For endpoint testing
 
-  Baza podataka:
-    MySql. Podatke za destinacije  uneti kroz upit koji ce se nalaziti na dnu read me fajla . 
-    Sto se tice slika destinacija njih takodje cemo uneti kroz upit.
-    Admina uneti rucno preko querija jer prilikom registracije mozemo obicne korisnike samo da registrujemo.
-    Sto se tice svih ostalih tabela one ce se popunjavati daljim testiranjem aplikacije.
-    Bice u upitu ispod i reakcije i recenzije cisto radi brze popunjenosti aplikacije.
+Running backend:
+1. Ensure MySQL is running
+2. After that, the app can be started via DiplomskiApplication file
+3. Application will be available at: http://localhost:8001
 
-  Svi queriji ce se nalaziti na dnu ispod opisa funkcionalnosti.
+Frontend:
+React                            -Library for user interface development
+Axios                            -Library for HTTP requests to backend (GET, POST, PUT, DELETE)
+Bootstrap                        -CSS framework for responsive design and layout
+React Toastify                   -Display notifications (toast notifications)
+Leaflet                          -JavaScript library for interactive maps
+React Leaflet                    -React wrapper for Leaflet (to make maps work in React environment)
+Formik                           -Tool for form management (inputs, submit, validation...)
+Yup                              -Schema-based data validation (often used with Formik)
 
+Running frontend:
+Install all dependencies: npm install
+Start React application: npm start
+Application will be available at: http://localhost:3000
 
-  Funkcionalnosti:
-    Svi: 
-      Imaju pristup prijavi i registraciji, obe iziskuju odredjenu formu prilikom unosa podataka.
-      Imaju pristup pocetnoj stranici koja nam nudi izbor daljeg i detaljnijeg pristupa ka smestajima, restoranimao i znamenitostima.
-      Kada se klikne na zasebno polje smestaja, restorana i znamenitosti vodi nas u prikaz tih destinacija.
-      U gornjoj strani prozora imacemo polje za pretragu koje ce se izvrsavati kada se klikne na dugme pretrazi.
-      Ispod polja za pretragu ce se nalaziti zasebni prikazi destinacija sa njihovim pocetnim slikama, nazivima vrstama smestaja i adresama.
-      Na dnu svakog boxa za destinaciju postojace i dugme detaljnije.
-      To dugme ce nas voditi u detaljan prikaz svake destinacije koja ce u sebi imati prikaz vise slika te destinacije,
-      ispod toga ce se nalaziti tip smestaja , adresa ,naziv , prosecna ocena iz recenzija koja ce menjati boju spram ocene koja je trenutna.
-      Od 1-2 svaka ocena ce biti crvena npr(2.3 , 1.2 , 2.8...).
-      Ocena 3 ce biti zuta(3.5, 3.0, 3.7,...).
-      Od 4 do 4.5 ce biti narandzasta.
-      Od 4.5 do 5 ce biti zelena.
-      Ispod prosecne ocene nalazice se opis destinacije.
-      Ispod opisa se nalaze mape destinacije gde cemo preko google maps imati precizan prikaz gde se ta nasa destinacija zapravo nalazi.
-      Ispod mapa cemo imati recenzije korisnika u kojima ce pisati ime, prezime autora, datum, ocena, komentar i reakcije.
-      
-   Ulogovani Korisnik:
-      Pored svih funkcionalnosti koje ima dok nije ulogovan, omoguceno mu je davanje recenzija na destinacije.
-      Tu ce korisnik moci da ostavi svoj komentar na destinaciju(maksimalno 1 po destinaciji radi preciznije logike).
-      Pored ostavljanja recenzija mocice i da ostavlja reakcije na sve recenzije koje se nalaze unutar destinacija(lajk ili dislajk po recenziji).
+Database:
+MySQL. Data for destinations to be entered through query that will be located at the bottom of the readme file.
+As for destination images, we will also enter them through query.
+Admin to be entered manually via query since registration only allows regular users to register.
+As for all other tables, they will be populated through further application testing.
+Reviews and reactions will also be in the query below for faster application population.
+All queries will be located at the bottom below functionality description.
 
-  Admin:
-      Sve funkcionalnosti koje imaju svi i ulogovani korisnik.
-      Pored svih funkcionalnosti koje imaju neprijavljeni i prijavljeni korisnik,
-      administrator ce imati jos opsirniju ulogu sa mogucnoscu brisanja i dodavanja destinacija. 
+Functionalities:
 
+Everyone:
+Has access to login and registration, both require specific form for data entry.
+Has access to homepage that offers choice for further and more detailed access to accommodations, restaurants and landmarks.
+When clicking on individual field for accommodations, restaurants and landmarks, it takes us to display of those destinations.
+At the top of the window we'll have a search field that will execute when clicking the search button.
+Below the search field will be individual destination displays with their initial images, names, accommodation types and addresses.
+At the bottom of each destination box there will be a "details" button.
+That button will take us to detailed view of each destination which will have display of multiple images of that destination,
+below that will be accommodation type, address, name, average rating from reviews that will change color based on current rating.
+From 1-2 every rating will be red (e.g., 2.3, 1.2, 2.8...).
+Rating 3 will be yellow (3.5, 3.0, 3.7,...).
+From 4 to 4.5 will be orange.
+From 4.5 to 5 will be green.
+Below average rating will be destination description.
+Below description are destination maps where we'll have precise display via Google Maps of where our destination is actually located.
+Below maps we'll have user reviews containing author's first name, last name, date, rating, comment and reactions.
 
+Logged-in User:
+  Besides all functionalities available when not logged in, they can give reviews on destinations.
+  User can leave their comment on destination (maximum 1 per destination for more precise logic).
+  Besides leaving reviews, they can also leave reactions on all reviews within destinations (like or dislike per review).
 
-
-Sto se tice admina njega uneti rucno u bazu proizvoljno po zelji. 
-Query upit za za unos svih destinacija, slika destinacija, restorana, smestaja, znamenitosti, recenzija, reakcija.
-
+Admin:
+  All functionalities that everyone and logged-in users have.
+  Besides all functionalities that non-logged and logged users have,
+  administrator will have more comprehensive role with ability to delete and add destinations.
+As for admin, enter them manually in database as desired.
+Query for entering all destinations, destination images, restaurants, accommodations, landmarks, reviews, reactions.
 
 INSERT INTO destinacija (id, adresa, latitude, longitude, naziv, opis, prosecna_ocena) VALUES
 (1,'Bulevar oslobodjenja 119 , Novi Sad , Srbija',45.2468,19.8481,'Promenada','Najveci trzni centar u Novom Sadu',3.33),
